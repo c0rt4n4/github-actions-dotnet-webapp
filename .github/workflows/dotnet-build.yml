@@ -7,13 +7,14 @@ jobs:
   build: 
     runs-on: ubuntu-lates
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - name: Criar o webapp
+        run: dotnet new webapp -n github4women
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v1
-        with: 
-          dotnet-version: '6.0.x'
+      - name: Baixar as dependências
+        run: dotnet restore **/*.csproj
     
-      - name: Build with dotnet
-        run: dotnet buils --configuration release    
+      - name: Compilar o webapp
+        run: dotnet build **/*.csproj --no-restore 
+
+      - name: Rodar o wepapp
+        run: dotnet run --project **/*.csproj 
