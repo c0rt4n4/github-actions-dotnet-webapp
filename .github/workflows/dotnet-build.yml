@@ -14,7 +14,7 @@ jobs:
         - name: Rodar script ou comando
           uses: actions/setup-dotnet@v3
           with:
-          dotnet-version: '8.0.x'  
+            dotnet-version: '8.0.x'  
 
         - name: Restaurar dependências
           run: dotnet restore github4women/github4women.csproj
