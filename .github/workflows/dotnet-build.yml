@@ -1,8 +1,6 @@
 name: evento acionado no push
 on: 
   push:
-    branchs: 
-      - main
   schedule: 
     - cron: "* 1 * * *"
 
@@ -10,17 +8,18 @@ jobs:
   build: 
     runs-on: ubuntu-lates
     steps:
-      - name: Criar o webapp
-        run: dotnet new webapp -n github4women
+        - name: Checkout do código
+          uses: actions/checkout@v3
 
-      - name: Baixar as dependências
-        run: dotnet restore **/*.csproj
-    
-      - name: Compilar o webapp
-        run: dotnet build **/*.csproj --no-restore 
+        - name: Rodar script ou comando
+          uses: actions/setup-dotnet@v3
+          with:
+          dotnet-version: '8.0.x'  
 
-      - name: Rodar o wepapp
-        run: dotnet run --project **/*.csproj 
+        - name: Restaurar dependências
+          run: dotnet restore github4women/github4women.csproj
 
+        - name: Build do projeto
+          run: dotnet build github4women/github4women.csproj --no-restore --configuration Release
 
   
