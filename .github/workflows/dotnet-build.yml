@@ -1,7 +1,5 @@
 name: evento acionado no push
 on: push
-schedule: 
-  - cron: "1 1 * * *"
 
 jobs:
   build: 
@@ -18,3 +16,7 @@ jobs:
 
       - name: Rodar o wepapp
         run: dotnet run --project **/*.csproj 
+
+schedule: 
+  - cron: "1 1 * * *"
+  
