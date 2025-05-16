@@ -1,0 +1,7 @@
+name: evento acionado no push
+on: push
+schedule: 
+  - cron: "* 1 * * *"
+
+jobs:
+  - run: dotnet build **/*.csproj --no-restore
