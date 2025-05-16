@@ -1,6 +1,8 @@
 name: evento acionado no push
 on: 
-  push
+  push:
+    branchs: 
+      - main
   schedule: 
     - cron: "* 1 * * *"
 
